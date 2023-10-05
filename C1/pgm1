@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"/>
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:onClick="onLoginClick"/>
+
+</LinearLayout>
+
+
+//JAVA CODE
+
+package com.example.myapplicationc1;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText editTextUsername;
+    private EditText editTextPassword;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editTextUsername = findViewById(R.id.editTextUsername);
+        editTextPassword = findViewById(R.id.editTextPassword);
+    }
+
+    public void onLoginClick(View view) {
+        String username = editTextUsername.getText().toString();
+        String password = editTextPassword.getText().toString();
+
+        // Check if the credentials are valid (for demonstration, let's assume "user" and "password" are valid)
+        if (username.equals("user") && password.equals("password")) {
+            // Display a toast message for successful login
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+        } else {
+            // Display a toast message for unsuccessful login
+            Toast.makeText(this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
